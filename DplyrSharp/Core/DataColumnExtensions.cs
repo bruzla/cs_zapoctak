@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 
 namespace DplyrSharp.Core;
@@ -37,7 +36,11 @@ public static class ColumnExtensions
         return true;
     }
 
-    public static bool SequenceEqual<T>(this DataColumn<T> a, DataColumn<T> b, IEqualityComparer<T>? comparer = null)
+    public static bool SequenceEqual<T>(
+        this DataColumn<T> a,
+        DataColumn<T> b,
+        IEqualityComparer<T>? comparer = null
+    )
     {
         if (ReferenceEquals(a, b))
             return true;
