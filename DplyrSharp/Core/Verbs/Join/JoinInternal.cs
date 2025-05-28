@@ -4,13 +4,19 @@ namespace DplyrSharp.Core;
 
 public partial class DataFrame
 {
+    private const int DummyValue = -1;
     private static DataFrame JoinByInternal(DataFrame left, DataFrame right, Func<DataRow, DataRow, bool> predicate, bool includeLeftUnmatched, bool includeRightUnmatched)
     {
-        if (left == null) throw new ArgumentNullException(nameof(left));
-        if (right == null) throw new ArgumentNullException(nameof(right));
-        if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+        var schema = BuildSchema(left, right);
+        var matches = FindMatches(left, right, predicate, includeLeftUnmatched, includeRightUnmatched);
+        var resultCols = Materialize(matches, schema);
 
-        // build the result‐schema: left cols, then right cols - _R on collisions
+        return new DataFrame(resultCols);
+    }
+
+    // build the result‐schema: left cols, then right cols - _R on collisions
+    private static List<IDataColumn> BuildSchema(DataFrame left, DataFrame right)
+    {
         var seen = new HashSet<string>(StringComparer.Ordinal);
         var schema = new List<IDataColumn>();
         foreach (var c in left.Columns)
@@ -27,7 +33,12 @@ public partial class DataFrame
             schema.Add(new ColumnPlaceholder(c.ClrType, alias, c.Name));
         }
 
-        // gather all matching (L,R) pairs and track them
+        return schema;
+    }
+
+    // gather all matching (L,R) pairs and track them
+    private static List<(DataRow L, DataRow? R)> FindMatches(DataFrame left, DataFrame right, Func<DataRow, DataRow, bool> predicate, bool includeLeftUnmatched, bool includeRightUnmatched)
+    {
         var matches = new List<(DataRow L, DataRow? R)>();
         var rightMatched = new bool[right.Rows.Count()];
         foreach (var rowL in left.Rows)
@@ -51,11 +62,16 @@ public partial class DataFrame
             foreach (var rowR in right.Rows)
             {
                 if (!rightMatched[rowR.RowIndex])
-                    matches.Add((new DataRow(left, /*dummy*/-1), rowR));
+                    matches.Add((new DataRow(left, DummyValue), rowR));
             }
         }
 
-        // materialise each column in schema order
+        return matches;
+    }
+
+    // materialise each column in schema order
+    private static List<IDataColumn> Materialize(List<(DataRow L, DataRow? R)> matches, List<IDataColumn> schema)
+    {
         int N = matches.Count;
         var resultCols = new List<IDataColumn>(schema.Count);
         foreach (var col in schema)
@@ -109,7 +125,7 @@ public partial class DataFrame
             }
         }
 
-        return new DataFrame(resultCols);
+        return resultCols;
     }
 
     // placeholder for right‐side metadata

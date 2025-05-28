@@ -24,7 +24,7 @@ public partial class GroupedDataFrame
             var key = new object?[groupColumns.Length];
             for (int gi = 0; gi < groupColumns.Length; gi++)
                 key[gi] = row[groupColumns[gi]];
-                
+
             if (!dict.TryGetValue(key, out var list))
             {
                 list = new List<DataRow>();
@@ -36,7 +36,7 @@ public partial class GroupedDataFrame
         var result = new List<(object?[] Key, List<DataRow> Items)>();
         foreach (var kv in dict)
             result.Add((kv.Key, kv.Value));
-        
+
         return result;
     }
 }

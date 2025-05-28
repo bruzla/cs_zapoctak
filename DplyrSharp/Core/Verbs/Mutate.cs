@@ -57,7 +57,7 @@ public partial class DataFrame
 
         ReplaceOrAddColumn(newColumns, col1.name, data1, nulls1);
         ReplaceOrAddColumn(newColumns, col2.name, data2, nulls2);
-        
+
         return new DataFrame(newColumns);
     }
 
