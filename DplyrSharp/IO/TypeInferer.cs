@@ -18,20 +18,30 @@ public static class TypeInferer
         int counter = 0;
         foreach (var value in values)
         {
-            if (string.IsNullOrEmpty(value)) continue;
-            if (isBool && !bool.TryParse(value, out _)) isBool = false;
-            if (isInt && !int.TryParse(value, out _)) isInt = false;
-            if (isDouble && !double.TryParse(value, out _)) isDouble = false;
-            if (isDateTime && !DateTime.TryParse(value, out _)) isDateTime = false;
+            if (string.IsNullOrEmpty(value))
+                continue;
+            if (isBool && !bool.TryParse(value, out _))
+                isBool = false;
+            if (isInt && !int.TryParse(value, out _))
+                isInt = false;
+            if (isDouble && !double.TryParse(value, out _))
+                isDouble = false;
+            if (isDateTime && !DateTime.TryParse(value, out _))
+                isDateTime = false;
 
             counter++;
-            if (counter == MaxValueCountToInferFrom) break;
+            if (counter == MaxValueCountToInferFrom)
+                break;
         }
 
-        if (isBool) return typeof(bool);
-        if (isInt) return typeof(int);
-        if (isDouble) return typeof(double);
-        if (isDateTime) return typeof(DateTime);
+        if (isBool)
+            return typeof(bool);
+        if (isInt)
+            return typeof(int);
+        if (isDouble)
+            return typeof(double);
+        if (isDateTime)
+            return typeof(DateTime);
         return typeof(string);
     }
 }
