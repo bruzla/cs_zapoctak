@@ -5,6 +5,14 @@ namespace DplyrSharp.Core;
 
 public partial class GroupedDataFrame
 {
+    /// <summary>
+    /// Applies an aggregation function to each group and returns a new <see cref="DataFrame"/> with one summarised column and all group keys.
+    /// </summary>
+    /// <typeparam name="T">The return type of the aggregation function.</typeparam>
+    /// <param name="name">The name of the summarised column.</param>
+    /// <param name="aggregator">A function that computes an aggregated value for each group.</param>
+    /// <returns>A new <see cref="DataFrame"/> containing the group keys and the summarised column.</returns>
+    /// <exception cref="ArgumentException">Thrown when the column name is null, empty, or whitespace.</exception>
     public DataFrame Summarise<T>(string name, Func<IEnumerable<DataRow>, T> aggregator)
     {
         if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Column name cannot be null or whitespace.", nameof(name));
@@ -18,6 +26,10 @@ public partial class GroupedDataFrame
         return new DataFrame(resultCols);
     }
 
+    /// <summary>
+    /// Adds group key columns to the summarised result using their original types.
+    /// </summary>
+    /// <param name="resultCols">The list of result columns to populate with group key data.</param>
     private void AddKeyColumns(List<IDataColumn> resultCols)
     {
         int n = GroupedRows.Count;
@@ -47,6 +59,13 @@ public partial class GroupedDataFrame
         }
     }
 
+    /// <summary>
+    /// Builds a typed column from aggregation results across all groups.
+    /// </summary>
+    /// <typeparam name="T">The type of the values produced by the aggregator.</typeparam>
+    /// <param name="name">The name of the new column.</param>
+    /// <param name="aggregator">The function to aggregate rows in a group.</param>
+    /// <returns>An <see cref="IDataColumn"/> representing the summarised data.</returns>
     private IDataColumn BuildAggregationColumn<T>(string name, Func<IEnumerable<DataRow>, T> aggregator)
     {
         int n = GroupedRows.Count;
@@ -72,6 +91,12 @@ public partial class GroupedDataFrame
         return new DataColumn<T>(name, data, nulls);
     }
 
+    /// <summary>
+    /// Replaces an existing column in the result list or adds a new one if it doesn't exist.
+    /// </summary>
+    /// <param name="columns">The list of columns to update.</param>
+    /// <param name="col">The new column to insert.</param>
+    /// <param name="name">The name to match for replacement.</param>
     private void ReplaceOrAddColumn(List<IDataColumn> columns, IDataColumn col, string name)
     {
         int index = columns.FindIndex(c => c.Name == name);

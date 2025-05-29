@@ -2,8 +2,17 @@ using System.Collections;
 
 namespace DplyrSharp.Core;
 
+/// <summary>
+/// Provides extension methods for comparing data columns within a <see cref="DataFrame"/>.
+/// </summary>
 public static class ColumnExtensions
 {
+    /// <summary>
+    /// Determines whether two <see cref="IDataColumn"/> instances contain the same sequence of values.
+    /// </summary>
+    /// <param name="a">The first column to compare.</param>
+    /// <param name="b">The second column to compare.</param>
+    /// <returns><c>true</c> if the columns have the same type, length, and cell values; otherwise, <c>false</c>.</returns>
     public static bool SequenceEqual(this IDataColumn a, IDataColumn b)
     {
         // reference or identity check
@@ -36,6 +45,14 @@ public static class ColumnExtensions
         return true;
     }
 
+    /// <summary>
+    /// Determines whether two <see cref="DataColumn{T}"/> instances contain the same sequence of values, with optional custom equality comparison.
+    /// </summary>
+    /// <typeparam name="T">The type of values stored in the columns.</typeparam>
+    /// <param name="a">The first typed column to compare.</param>
+    /// <param name="b">The second typed column to compare.</param>
+    /// <param name="comparer">An optional equality comparer for values of type <typeparamref name="T"/>.</param>
+    /// <returns><c>true</c> if the columns have the same values and null bitmap; otherwise, <c>false</c>.</returns>
     public static bool SequenceEqual<T>(
         this DataColumn<T> a,
         DataColumn<T> b,

@@ -4,6 +4,14 @@ namespace DplyrSharp.Core;
 
 public partial class DataFrame
 {
+    /// <summary>
+    /// Returns a new <see cref="DataFrame"/> with a new or updated column based on a selector function.
+    /// </summary>
+    /// <typeparam name="T">The type of values produced by the selector.</typeparam>
+    /// <param name="name">The name of the new or replaced column.</param>
+    /// <param name="selector">A function that computes a value for each row.</param>
+    /// <returns>A new <see cref="DataFrame"/> with the added or updated column.</returns>
+    /// <exception cref="ArgumentException">Thrown when the column name is null, empty, or whitespace.</exception>
     public DataFrame Mutate<T>(string name, Func<DataRow, T> selector)
     {
         if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Column name cannot be null or whitespace.", nameof(name));
@@ -25,6 +33,14 @@ public partial class DataFrame
         return new DataFrame(newColumns);
     }
 
+    /// <summary>
+    /// Replaces an existing column or adds a new one with the specified name and data.
+    /// </summary>
+    /// <typeparam name="T">The type of values in the column.</typeparam>
+    /// <param name="columns">The list of columns to modify.</param>
+    /// <param name="name">The column name to replace or add.</param>
+    /// <param name="data">The data array.</param>
+    /// <param name="nulls">The bitmap indicating null values.</param>
     private void ReplaceOrAddColumn<T>(List<IDataColumn> columns, string name, T[] data, BitArray nulls)
     {
         var col = new DataColumn<T>(name, data, nulls);

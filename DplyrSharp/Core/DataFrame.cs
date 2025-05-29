@@ -3,18 +3,41 @@ using System.Text;
 
 namespace DplyrSharp.Core;
 
+/// <summary>
+/// Represents a tabular data structure consisting of named columns of potentially different types.
+/// </summary>
 public partial class DataFrame
 {
+    /// <summary>
+    /// The internal list of data columns in the data frame.
+    /// </summary>
     private readonly List<IDataColumn> _columns;
+
+    /// <summary>
+    /// A dictionary mapping column names to their corresponding index positions.
+    /// </summary>
     private readonly Dictionary<string, int> _nameToIndex;
 
+    /// <summary>
+    /// Gets the number of rows in the data frame.
+    /// </summary>
     public int RowCount { get; init; }
+    /// <summary>
+    /// Gets the number of columns in the data frame.
+    /// </summary>
     public int ColCount { get; init; }
+    /// <summary>
+    /// Gets the schema of the data frame, describing the structure of the columns.
+    /// </summary>
     public Schema Schema { get; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DataFrame"/> class with the specified columns.
+    /// </summary>
+    /// <param name="columns">The sequence of columns to include in the data frame.</param>
     public DataFrame(IEnumerable<IDataColumn> columns)
     {
-        _columns = columns.ToList(); // tady deep copy!!!!!!
+        _columns = columns.ToList();
 
         _nameToIndex = _columns
             .Select((c, i) => (c.Name, i))
@@ -25,8 +48,14 @@ public partial class DataFrame
         RowCount = ColCount == 0 ? 0 : _columns[0].RowCount;
     }
 
+    /// <summary>
+    /// Gets a read-only list of columns in the data frame.
+    /// </summary>
     public IReadOnlyList<IDataColumn> Columns => _columns;
 
+    /// <summary>
+    /// Gets an enumerable collection of <see cref="DataRow"/> objects representing each row of the data frame.
+    /// </summary>
     public IEnumerable<DataRow> Rows
     {
         get
@@ -36,6 +65,12 @@ public partial class DataFrame
         }
     }
 
+    /// <summary>
+    /// Retrieves the index of a column by its name.
+    /// </summary>
+    /// <param name="name">The name of the column.</param>
+    /// <returns>The zero-based index of the column.</returns>
+    /// <exception cref="ArgumentException">Thrown if the specified column name does not exist.</exception>
     internal int GetColumnIndex(string name)
     {
         if (!_nameToIndex.TryGetValue(name, out var index))
@@ -43,6 +78,11 @@ public partial class DataFrame
         return index;
     }
 
+    /// <summary>
+    /// Creates a new <see cref="DataFrame"/> that includes only the specified rows.
+    /// </summary>
+    /// <param name="rows">The list of row indices to include.</param>
+    /// <returns>A new <see cref="DataFrame"/> containing only the selected rows.</returns>
     private DataFrame SliceRows(IList<int> rows)
     {
         var newCols = new List<IDataColumn>(Columns.Count);
@@ -67,11 +107,22 @@ public partial class DataFrame
         return new DataFrame(newCols);
     }
 
+
+    /// <summary>
+    /// Writes the contents of the data frame to a CSV file at the specified path.
+    /// </summary>
+    /// <param name="path">The file path to write the CSV to.</param>
+    /// <param name="options">Optional CSV writing options.</param>
     public void WriteCsv(string path, IO.CsvOptions? options = null)
     {
         IO.CsvWriter.WriteCsv(this, path, options);
     }
 
+    /// <summary>
+    /// Returns a string representation of the data frame, displaying up to the specified number of rows.
+    /// </summary>
+    /// <param name="nrow">The number of rows to display.</param>
+    /// <returns>A string representation of the data frame.</returns>
     public string ToString(int nrow)
     {
         var sb = new StringBuilder();
@@ -93,16 +144,28 @@ public partial class DataFrame
         return sb.ToString();
     }
 
+    /// <summary>
+    /// Returns a string representation of the full data frame.
+    /// </summary>
+    /// <returns>A string representation of the full data frame.</returns>
     public override string ToString()
     {
         return ToString(RowCount);
     }
 
+
+    /// <summary>
+    /// Prints a string representation of the data frame to the console, showing up to the specified number of rows.
+    /// </summary>
+    /// <param name="nrow">The number of rows to display.</param>
     public void Print(int nrow)
     {
         Console.WriteLine(this.ToString(nrow));
     }
 
+    /// <summary>
+    /// Prints the entire data frame to the console.
+    /// </summary>
     public void Print()
     {
         Console.WriteLine(this.ToString());

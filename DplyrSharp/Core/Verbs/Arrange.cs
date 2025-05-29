@@ -4,6 +4,13 @@ namespace DplyrSharp.Core;
 
 public partial class DataFrame
 {
+    /// <summary>
+    /// Returns a new <see cref="DataFrame"/> with rows ordered by the specified key selector.
+    /// </summary>
+    /// <typeparam name="TKey">The type of the key used for sorting. Must be non-nullable.</typeparam>
+    /// <param name="keySelector">A function to extract the sort key from each row.</param>
+    /// <param name="descending">If <c>true</c>, sorts in descending order; otherwise, ascending.</param>
+    /// <returns>A new <see cref="DataFrame"/> with rows sorted by the specified key.</returns>
     public DataFrame Arrange<TKey>(Func<DataRow, TKey> keySelector, bool descending = false)
         where TKey : notnull
     {

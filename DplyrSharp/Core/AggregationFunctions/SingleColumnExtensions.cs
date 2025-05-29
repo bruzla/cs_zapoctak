@@ -2,8 +2,19 @@ using System;
 
 namespace DplyrSharp.Core;
 
+/// <summary>
+/// Provides statistical aggregation methods over a single column of values derived from <see cref="DataRow"/>s.
+/// </summary>
 public static class SingleColumnExtensions
 {
+    /// <summary>
+    /// Computes the population variance of a numeric column derived from the specified selector.
+    /// </summary>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selector">A function that extracts a numeric value from each row.</param>
+    /// <returns>The population variance of the selected values.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="selector"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the sequence is empty.</exception>
     public static double Variance(this IEnumerable<DataRow> source, Func<DataRow, double> selector)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
@@ -34,11 +45,25 @@ public static class SingleColumnExtensions
         return sumSq / count;
     }
 
+    /// <summary>
+    /// Computes the population standard deviation of a numeric column derived from the specified selector.
+    /// </summary>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selector">A function that extracts a numeric value from each row.</param>
+    /// <returns>The population standard deviation.</returns>
     public static double StdDev(this IEnumerable<DataRow> source, Func<DataRow, double> selector)
     {
         return Math.Sqrt(source.Variance(selector));
     }
 
+    /// <summary>
+    /// Computes the median of a numeric column derived from the specified selector.
+    /// </summary>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selector">A function that extracts a numeric value from each row.</param>
+    /// <returns>The median value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="selector"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the sequence is empty.</exception>
     public static double Median(this IEnumerable<DataRow> source, Func<DataRow, double> selector)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
@@ -57,6 +82,16 @@ public static class SingleColumnExtensions
             : (list[mid - 1] + list[mid]) / 2.0;
     }
 
+    /// <summary>
+    /// Computes the p-th percentile (0 ≤ p ≤ 1) of a numeric column derived from the selector.
+    /// </summary>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selector">A function that extracts a numeric value from each row.</param>
+    /// <param name="p">A percentile value between 0 and 1.</param>
+    /// <returns>The percentile value.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="selector"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="p"/> is not between 0 and 1.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the sequence is empty.</exception>
     public static double Percentile(this IEnumerable<DataRow> source, Func<DataRow, double> selector, double p)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
@@ -75,6 +110,15 @@ public static class SingleColumnExtensions
         return list[rank - 1];
     }
 
+    /// <summary>
+    /// Returns the most frequently occurring value in a column derived from the selector.
+    /// </summary>
+    /// <typeparam name="T">The type of the values to count. Must be non-nullable.</typeparam>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selector">A function that extracts the value to count from each row.</param>
+    /// <returns>The value that appears most frequently.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="selector"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the sequence is empty.</exception>
     public static T Mode<T>(this IEnumerable<DataRow> source, Func<DataRow, T> selector) where T : notnull
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
@@ -103,6 +147,14 @@ public static class SingleColumnExtensions
         return best!;
     }
 
+    /// <summary>
+    /// Counts the number of distinct values in a column derived from the selector.
+    /// </summary>
+    /// <typeparam name="T">The type of the values to count.</typeparam>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selector">A function that extracts the value from each row.</param>
+    /// <returns>The number of unique values.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="selector"/> is null.</exception>
     public static int CountDistinct<T>(this IEnumerable<DataRow> source, Func<DataRow, T> selector)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
@@ -115,6 +167,14 @@ public static class SingleColumnExtensions
     }
 
 
+    /// <summary>
+    /// Computes the range (maximum - minimum) of a numeric column derived from the selector.
+    /// </summary>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selector">A function that extracts a numeric value from each row.</param>
+    /// <returns>The range of the values.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="selector"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the sequence is empty.</exception>
     public static double Range(this IEnumerable<DataRow> source, Func<DataRow, double> selector)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));

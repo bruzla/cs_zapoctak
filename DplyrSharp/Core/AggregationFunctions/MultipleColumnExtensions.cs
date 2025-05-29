@@ -2,8 +2,20 @@ using System;
 
 namespace DplyrSharp.Core.AggregationFunctions;
 
+/// <summary>
+/// Provides aggregation functions over multiple columns derived from <see cref="DataRow"/>s.
+/// </summary>
 public static class MultipleColumnExtensions
 {
+    /// <summary>
+    /// Computes the weighted average of values in a data frame, where both the value and weight are provided by selectors.
+    /// </summary>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="valueSelector">A function to extract the value from each row.</param>
+    /// <param name="weightSelector">A function to extract the weight for each value.</param>
+    /// <returns>The weighted average of the selected values.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if any argument is <c>null</c>.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the sequence is empty or the total weight is zero.</exception>
     public static double WeightedAverage(this IEnumerable<DataRow> source, Func<DataRow, double> valueSelector, Func<DataRow, double> weightSelector)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
@@ -31,6 +43,17 @@ public static class MultipleColumnExtensions
         return sumWeighted / sumWeights;
     }
 
+    /// <summary>
+    /// Computes the Pearson correlation coefficient between two columns derived from a data frame.
+    /// </summary>
+    /// <param name="source">The sequence of <see cref="DataRow"/> objects.</param>
+    /// <param name="selectorX">A function to extract the first value (X) from each row.</param>
+    /// <param name="selectorY">A function to extract the second value (Y) from each row.</param>
+    /// <returns>The Pearson correlation coefficient between X and Y.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if any argument is <c>null</c>.</exception>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown if the sequence is empty or either column has zero variance (making correlation undefined).
+    /// </exception>
     public static double Correlation(this IEnumerable<DataRow> source, Func<DataRow, double> selectorX, Func<DataRow, double> selectorY)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
