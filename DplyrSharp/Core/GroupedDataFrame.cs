@@ -17,7 +17,7 @@ public partial class GroupedDataFrame
 
     private static List<(object?[] Key, List<DataRow> Items)> BuildGroups(DataFrame dataFrame, string[] groupColumns)
     {
-        var dict = new Dictionary<object[], List<DataRow>>(new ObjectSequenceComparer());
+        var dict = new Dictionary<object?[], List<DataRow>>(new ObjectSequenceComparer());
 
         foreach (var row in dataFrame.Rows)
         {
@@ -41,9 +41,9 @@ public partial class GroupedDataFrame
     }
 }
 
-internal sealed class ObjectSequenceComparer : IEqualityComparer<object[]>
+internal sealed class ObjectSequenceComparer : IEqualityComparer<object?[]>
 {
-    public bool Equals(object[]? x, object[]? y)
+    public bool Equals(object?[]? x, object?[]? y)
     {
         if (ReferenceEquals(x, y))
             return true;
@@ -59,7 +59,7 @@ internal sealed class ObjectSequenceComparer : IEqualityComparer<object[]>
         return true;
     }
 
-    public int GetHashCode(object[] obj)
+    public int GetHashCode(object?[] obj)
     {
         if (obj == null)
             throw new ArgumentNullException(nameof(obj));

@@ -72,7 +72,7 @@ public partial class DataFrame
         IO.CsvWriter.WriteCsv(this, path, options);
     }
 
-    public override string ToString()
+    public string ToString(int nrow)
     {
         var sb = new StringBuilder();
 
@@ -81,12 +81,26 @@ public partial class DataFrame
         sb.AppendLine(string.Join(IO.CsvOptions.Default.Delimiter, colNames));
 
         // values
+        int i = 0;
         foreach (var row in Rows)
         {
+            if (++i > nrow)
+                break;
+
             sb.AppendLine(row.ToString());
         }
 
         return sb.ToString();
+    }
+
+    public override string ToString()
+    {
+        return ToString(RowCount);
+    }
+
+    public void Print(int nrow)
+    {
+        Console.WriteLine(this.ToString(nrow));
     }
 
     public void Print()

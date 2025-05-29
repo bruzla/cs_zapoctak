@@ -75,7 +75,7 @@ public static class SingleColumnExtensions
         return list[rank - 1];
     }
 
-    public static T Mode<T>(this IEnumerable<DataRow> source, Func<DataRow, T> selector)
+    public static T Mode<T>(this IEnumerable<DataRow> source, Func<DataRow, T> selector) where T : notnull
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
         if (selector == null) throw new ArgumentNullException(nameof(selector));
