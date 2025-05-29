@@ -21,7 +21,7 @@ id,name,classification,designation,average_height,average_lifespan
 20,Cerean,mammal,sentient,200,
 21,Nautolan,amphibian,sentient,180,70
 22,Zabrak,mammal,sentient,180,
-23,Tholothian,mammal,sentient,,
+23,Tholothian,mammal,sentient,190,
 24,Iktotchi,,sentient,180,
 25,Quermian,mammal,sentient,240,86
 26,Kel Dor,,sentient,180,70
@@ -31,7 +31,7 @@ id,name,classification,designation,average_height,average_lifespan
 30,Clawdite,reptilian,sentient,180,70
 31,Besalisk,amphibian,sentient,178,75
 32,Kaminoan,amphibian,sentient,220,80
-33,Skakoan,mammal,sentient,,
+33,Skakoan,mammal,sentient,210,
 34,Muun,mammal,sentient,190,100
 35,Togruta,mammal,sentient,180,94
 36,Kaleesh,reptile,sentient,170,80

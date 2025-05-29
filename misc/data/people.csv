@@ -16,7 +16,7 @@ Han Solo,63,brown,male,180,80,22,1
 Greedo,78,black,male,173,74,23,4
 Jabba Desilijic Tiure,634,orange,hermaphrodite,175,1.358,24,5
 Wedge Antilles,55,hazel,male,170,77,22,1
-Jek Tono Porkins,,blue,male,180,110,26,
+Jek Tono Porkins,,blue,male,180,110,26,1
 Yoda,930,brown,male,66,17,28,6
 Palpatine,116,yellow,male,170,75,8,1
 Boba Fett,,brown,male,183,78.2,10,1
@@ -57,8 +57,8 @@ Saesee Tiin,,orange,male,188,,47,24
 Yarael Poof,,yellow,male,264,,48,25
 Plo Koon,56,black,male,188,80,49,26
 Mas Amedda,,blue,male,196,,50,27
-Gregar Typho,,brown,male,185,85,8,
-Cordé,,brown,female,157,,8,
+Gregar Typho,,brown,male,185,85,8,1
+Cordé,,brown,female,157,,8,1
 Cliegg Lars,116,blue,male,183,,1,1
 Poggle the Lesser,,yellow,male,183,80,11,28
 Luminara Unduli,92,blue,female,170,56.2,51,29
@@ -72,14 +72,14 @@ Dexter Jettster,,yellow,male,198,102,55,31
 Lama Su,,black,male,229,88,10,32
 Taun We,,black,female,213,,10,32
 Jocasta Nu,,blue,female,167,,9,1
-R4-P17,,red,female,96,,28,
+R4-P17,,red,female,96,,28,2
 Wat Tambor,,,male,193,48,56,33
 San Hill,,gold,male,191,,57,34
 Shaak Ti,,black,female,178,57,58,35
 Grievous,,green,male,216,159,59,36
 Tarfful,,blue,male,234,136,14,3
 Raymus Antilles,,brown,male,188,79,2,1
-Sly Moore,,white,female,178,48,60,
+Sly Moore,,white,female,178,48,60,1
 Tion Medon,,black,male,206,80,12,37
 Finn,,dark,male,,,28,1
 Rey,,hazel,female,,,28,1
