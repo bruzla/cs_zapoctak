@@ -6,6 +6,7 @@
 
 ## Directory Structure
 
+```
 root/
 ├── README.md                 # Project overview
 │
@@ -20,6 +21,7 @@ root/
 ├── ExampleProgram/...        # Sample project that uses the DplyrSharp library
 │
 └── misc/...                  # Miscellaneous resources
+```
 
 ## Documentation
 

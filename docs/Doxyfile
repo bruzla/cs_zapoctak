@@ -1,0 +1,29 @@
+# general
+PROJECT_NAME           = "DplyrSharp"
+OUTPUT_DIRECTORY       = "./docs"
+INPUT                 = "./DplyrSharp"
+FILE_PATTERNS         = *.cs
+RECURSIVE             = YES
+EXTRACT_ALL           = YES
+
+# output format
+GENERATE_HTML         = YES
+GENERATE_LATEX        = NO
+GENERATE_XML          = NO
+GENERATE_RTF          = NO
+GENERATE_MAN          = NO
+GENERATE_PERLMOD      = NO
+
+# output customization
+DISABLE_INDEX         = NO
+SEARCHENGINE          = NO
+GENERATE_TREEVIEW     = NO
+HAVE_DOT = NO
+DOT_GRAPHICS = NO
+CALL_GRAPH = NO
+INCLUDE_GRAPH = NO
+
+
+
+
+

@@ -56,3 +56,8 @@ nunit-*.xml
 # IDE
 .vscode/
 .vs/
+
+# docs related files
+docs/*
+!docs/Doxyfile
+
