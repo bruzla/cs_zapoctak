@@ -23,6 +23,10 @@ root/
 └── misc/...                  # Miscellaneous resources
 ```
 
+## User Manual
+
+User manual can be found [here](/docs/user_manual.md).
+
 ## Documentation
 
 The project documentation is generated using Doxygen.
