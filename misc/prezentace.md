@@ -1,90 +1,51 @@
-Below is a suggested 7-slide deck outline. You can copy each “slide” (heading + bullets) into your favorite presentation tool and expand/format as needed.
+# Presentation
 
----
+## Slide 1
 
-## Slide 1 – Title
+Title: DplyrSharp
+Subtitle: NPRG035 + NPRG038 Final Project
 
-**DplyrSharp**
-*C# dplyr-Style Tabular-Processing Library*
-– School Project / NPRG035+NPRG038 Final
-– \[Your Name], \[Date]
+## SLide 2 (Inspiration)
 
----
+A lil smth about dplyr
 
-## Slide 2 – Motivation & Goals
+example:
 
-* Provide R-dplyr-inspired fluent API in C#
-* Handle heterogeneous, column-oriented data efficiently
-* Support CSV I/O, querying, in-memory analytics
-* Showcase technologies from lectures:
-  – Generics & variant interfaces
-  – Delegates & extension methods
-  – Reflection & dynamic column creation
-  – Custom comparers & LINQ-style operators
+```R
+result = data %>%
+  select(Name, Country, Age) %>%
+  filter(Age > 30) %>%
+  mutate(IsSenior = Age >= 65) %>%
+  group_by(Country, IsSenior) %>%
+  summarise(Count = n(), AvgAge = mean(Age)) %>%
+  arrange(IsSenior, Country)
+```
 
----
+## Slide 3 (Main Features)
 
-## Slide 3 – Main Features
+* **Core types**: `DataFrame`, `IDataColumn`, `DataRow`
+* **CSV I/O**: type inference, culture options
+* **Verbs** :
 
-* **Core types**: `DataFrame`, `DataColumn<T>`, `DataRow` with unboxed `Get<T>()`
-* **CSV I/O**: type inference, null-bitmap, culture options
-* **Verbs** (eager):
-
-  * `Filter`, `Select`, `Mutate`, `Arrange`
-  * `GroupBy` + `Summarise` (built-in: Count, Sum, Avg, Min, Max, Median, Mode, Variance, StdDev, Correlation, WeightedAverage)
+  * `Filter`, `Select`, `Mutate`, `Arrange` by Func<T, R>
+  * `GroupBy` + `Summarise` (built-in: Count, Sum, Avg, Min, Max, Median, Mode, Variance, StdDev, Correlation, WeightedAverage) by IEnumerable<DataRow> aggergator and property selector
   * `InnerJoin`, `LeftJoin`, `RightJoin`, `FullJoin` by row predicate
 
----
+## Slide 4 (Demonstration)
 
-## Slide 4 – High-Level Architecture
+TO DO
 
-```
-User code
-   ↓ (extension methods)
- Verbs layer ──▶ Executes eagerly on
-   ↓             DataFrame core
-DataFrame ────▶ Storage: T[] + BitArray null-mask
-   │
-   └── I/O Adaptors: CSV (JSON, Parquet, SQL planned)
-```
+- sample code
+- its output
 
-* Fluent chaining via **extension methods**
-* Core holds columns as typed arrays + null‐bitmaps
-* All operations materialize immediately (future lazy DAG planned)
+## Slide 5 (High-Level Architecture)
 
----
+TO DO
 
-## Slide 5 – Key Challenges & Solutions
+## Slide 6 (Hlavní řešené problémy)
 
-| Problem             | Solution                                                      |
-| ------------------- | ------------------------------------------------------------- |
-| **Null handling**   | `BitArray` alongside raw `T[]`                                |
-| **Boxing/unboxing** | `DataRow.Get<T>()` → direct `DataColumn<T>` access            |
-| **Type inference**  | Optional user-supplied types; `TypeConverter` caching         |
-| **Grouping**        | Custom `IEqualityComparer<object?[]>` + single-pass bucketing |
-| **Joins**           | Unified `JoinByInternal` with flags for left/right/full       |
-| **Performance**     | Parallelized pure transforms; plan for lazy fusion            |
+TO DO
 
----
-
-## Slide 6 – Demo & Next Steps
-
-1. **Live demo** of:
-
-   * Reading/Writing CSV
-   * Chaining Filter→Mutate→Arrange→GroupBy→Summarise
-   * Joins by predicate
-2. **Roadmap**
-
-   * Lazy execution DAG + SQL translation
-   * Parquet & JSON back-ends
-   * Additional aggregators (IQR, skewness, window functions)
-   * Benchmarking & parallel refinements
-
----
-
-## Slide 7 – Thank You / Q\&A
-
-– Questions?
-– GitHub: `github.com/yourrepo/DplyrSharp`
-– Contact: `you@example.com`
+- algoritmicky: joiny a groupovani prislusnych radku
+- strongly typed vs object / boxing vs unboxing
+- pridavani vice overloadu kvuli poctu
