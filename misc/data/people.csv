@@ -1,0 +1,88 @@
+name,age,eye_color,gender,height,mass,homeworld_id,species_id
+Luke Skywalker,53,blue,male,172,77,1,1
+C-3PO,146,yellow,,167,75,1,2
+R2-D2,67,red,,96,32,8,2
+Darth Vader,,yellow,male,202,136,1,1
+Leia Organa,53,brown,female,150,49,2,1
+Owen Lars,86,blue,male,178,120,1,1
+Beru Whitesun lars,81,blue,female,165,75,1,1
+R5-D4,,red,,97,32,1,2
+Biggs Darklighter,58,brown,male,183,84,1,1
+Obi-Wan Kenobi,91,blue-gray,male,182,77,20,1
+Anakin Skywalker,,blue,male,188,84,1,1
+Wilhuff Tarkin,98,blue,male,180,,21,1
+Chewbacca,234,blue,male,228,112,14,3
+Han Solo,63,brown,male,180,80,22,1
+Greedo,78,black,male,173,74,23,4
+Jabba Desilijic Tiure,634,orange,hermaphrodite,175,1.358,24,5
+Wedge Antilles,55,hazel,male,170,77,22,1
+Jek Tono Porkins,,blue,male,180,110,26,
+Yoda,930,brown,male,66,17,28,6
+Palpatine,116,yellow,male,170,75,8,1
+Boba Fett,,brown,male,183,78.2,10,1
+IG-88,49,red,,200,140,28,2
+Bossk,87,red,male,190,113,29,7
+Lando Calrissian,65,brown,male,177,79,30,1
+Lobot,71,blue,male,175,79,6,1
+Ackbar,75,orange,male,180,83,31,8
+Mon Mothma,82,blue,female,150,,32,1
+Arvel Crynyd,,brown,male,,,28,1
+Wicket Systri Warrick,42,brown,male,88,20,7,9
+Nien Nunb,,black,male,160,68,33,10
+Qui-Gon Jinn,126,blue,male,193,89,28,1
+Nute Gunray,,red,male,191,90,18,11
+Finis Valorum,125,blue,male,170,,9,1
+Padmé Amidala,80,brown,female,185,45,8,1
+Jar Jar Binks,86,orange,male,196,66,8,12
+Roos Tarpals,,orange,male,224,82,8,12
+Rugor Nass,,orange,male,206,,8,12
+Ric Olié,,blue,male,183,,8,1
+Watto,,yellow,male,137,,34,13
+Sebulba,,orange,male,112,40,35,14
+Quarsh Panaka,96,brown,male,183,,8,1
+Shmi Skywalker,106,brown,female,163,,1,1
+Darth Maul,88,yellow,male,175,80,36,22
+Bib Fortuna,,pink,male,180,,37,15
+Ayla Secura,82,hazel,female,178,55,37,15
+Ratts Tyerel,,,male,79,15,38,16
+Dud Bolt,,yellow,male,94,45,39,17
+Gasgano,,black,male,122,,40,18
+Ben Quadinaros,,orange,male,163,65,41,19
+Mace Windu,106,brown,male,188,84,42,1
+Ki-Adi-Mundi,126,yellow,male,198,82,43,20
+Kit Fisto,,black,male,196,87,44,21
+Eeth Koth,,brown,male,171,,45,22
+Adi Gallia,,blue,female,184,50,9,23
+Saesee Tiin,,orange,male,188,,47,24
+Yarael Poof,,yellow,male,264,,48,25
+Plo Koon,56,black,male,188,80,49,26
+Mas Amedda,,blue,male,196,,50,27
+Gregar Typho,,brown,male,185,85,8,
+Cordé,,brown,female,157,,8,
+Cliegg Lars,116,blue,male,183,,1,1
+Poggle the Lesser,,yellow,male,183,80,11,28
+Luminara Unduli,92,blue,female,170,56.2,51,29
+Barriss Offee,74,blue,female,166,50,51,29
+Dormé,,brown,female,165,,8,1
+Dooku,136,brown,male,193,80,52,1
+Bail Prestor Organa,101,brown,male,191,,2,1
+Jango Fett,100,brown,male,183,79,53,1
+Zam Wesell,,yellow,female,168,55,54,30
+Dexter Jettster,,yellow,male,198,102,55,31
+Lama Su,,black,male,229,88,10,32
+Taun We,,black,female,213,,10,32
+Jocasta Nu,,blue,female,167,,9,1
+R4-P17,,red,female,96,,28,
+Wat Tambor,,,male,193,48,56,33
+San Hill,,gold,male,191,,57,34
+Shaak Ti,,black,female,178,57,58,35
+Grievous,,green,male,216,159,59,36
+Tarfful,,blue,male,234,136,14,3
+Raymus Antilles,,brown,male,188,79,2,1
+Sly Moore,,white,female,178,48,60,
+Tion Medon,,black,male,206,80,12,37
+Finn,,dark,male,,,28,1
+Rey,,hazel,female,,,28,1
+Poe Dameron,,brown,male,,,28,1
+BB8,,black,,,,28,2
+Captain Phasma,,,female,,,28,1

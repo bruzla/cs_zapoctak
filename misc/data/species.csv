@@ -1,0 +1,38 @@
+id,name,classification,designation,average_height,average_lifespan
+1,Human,mammal,sentient,180,120
+2,Droid,artificial,sentient,,2147483647
+3,Wookiee,mammal,sentient,210,400
+4,Rodian,sentient,reptilian,170,
+5,Hutt,gastropod,sentient,300,1000
+6,Yoda's species,mammal,sentient,66,900
+7,Trandoshan,reptile,sentient,200,
+8,Mon Calamari,amphibian,sentient,160,
+9,Ewok,mammal,sentient,100,
+10,Sullustan,mammal,sentient,180,
+11,Neimodian,,sentient,180,
+12,Gungan,amphibian,sentient,190,
+13,Toydarian,mammal,sentient,120,91
+14,Dug,mammal,sentient,100,
+15,Twi'lek,mammals,sentient,200,
+16,Aleena,reptile,sentient,80,79
+17,Vulptereen,,sentient,100,
+18,Xexto,,sentient,125,
+19,Toong,,sentient,200,
+20,Cerean,mammal,sentient,200,
+21,Nautolan,amphibian,sentient,180,70
+22,Zabrak,mammal,sentient,180,
+23,Tholothian,mammal,sentient,,
+24,Iktotchi,,sentient,180,
+25,Quermian,mammal,sentient,240,86
+26,Kel Dor,,sentient,180,70
+27,Chagrian,amphibian,sentient,190,
+28,Geonosian,insectoid,sentient,178,
+29,Mirialan,mammal,sentient,180,
+30,Clawdite,reptilian,sentient,180,70
+31,Besalisk,amphibian,sentient,178,75
+32,Kaminoan,amphibian,sentient,220,80
+33,Skakoan,mammal,sentient,,
+34,Muun,mammal,sentient,190,100
+35,Togruta,mammal,sentient,180,94
+36,Kaleesh,reptile,sentient,170,80
+37,Pau'an,mammal,sentient,190,700
