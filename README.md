@@ -11,7 +11,9 @@ root/
 ├── README.md                 # Project overview
 │
 ├── docs/
-│   └── Doxyfile              # Configuration for generating documentation with Doxygen
+│   ├── Doxyfile              # Configuration for generating documentation with Doxygen
+│   │
+│   └── user_manual.md        # User manual
 │
 ├── DplyrSharp/               
 │   ├── Core/...              # Core data structures and logic
